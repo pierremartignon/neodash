@@ -15,6 +15,7 @@ import { extensionEnabled } from '../../extensions/ExtensionUtils';
 import { IconButton } from '@neo4j-ndl/react';
 import { CloudArrowDownIconOutline } from '@neo4j-ndl/react/icons';
 import { ThemeProvider, createTheme } from '@mui/material/styles';
+import Button from '@material-ui/core/Button';
 
 const TABLE_HEADER_HEIGHT = 32;
 const TABLE_FOOTER_HEIGHT = 52;
@@ -27,22 +28,44 @@ const theme = createTheme({
   },
 });
 
+const fallbackRenderer = (value) => {
+  return JSON.stringify(value);
+};
+
+function renderAsButtonWrapper(renderer) {
+  return function renderAsButton(value) {
+    return (
+      <Button
+        style={{ width: '100%', marginLeft: '5px', marginRight: '5px' }}
+        variant='contained'
+        color='primary'
+      >{`${renderer(value)}`}</Button>
+    );
+  };
+}
+
 function ApplyColumnType(column, value) {
   const renderer = getRendererForValue(value);
+  const renderCell = renderer.renderValue;
   const columnProperties = renderer
-    ? { type: renderer.type, renderCell: renderer.renderValue }
-    : // TODO: this should probably be a function
-      rendererForType.string;
+    ? { type: renderer.type, renderCell: renderCell ? renderCell : fallbackRenderer }
+    : rendererForType.string;
   if (columnProperties) {
     column = { ...column, ...columnProperties };
   }
   return column;
 }
 
+export const generateSafeColumnKey = (key) => {
+  return key != 'id' ? key : `${key} `;
+};
+
 const NeoTableChart = (props: ChartProps) => {
   const transposed = props.settings && props.settings.transposed ? props.settings.transposed : false;
   const allowDownload =
     props.settings && props.settings.allowDownload !== undefined ? props.settings.allowDownload : false;
+
+  const actionsRules = [];
   const compact = props.settings && props.settings.compact !== undefined ? props.settings.compact : false;
   const separator = props.settings && props.settings.separator !== undefined ? props.settings.separator : ',';
   const styleRules = useStyleRules(
@@ -73,9 +96,8 @@ const NeoTableChart = (props: ChartProps) => {
 
   const { records } = props;
 
-  const generateSafeColumnKey = (key) => {
-    return key != 'id' ? key : `${key} `;
-  };
+  const actionableFields = [];
+
   const columns = transposed
     ? ['Field'].concat(records.map((r, j) => `Value${j == 0 ? '' : ` ${(j + 1).toString()}`}`)).map((key, i) => {
         const value = key;
@@ -162,7 +184,7 @@ const NeoTableChart = (props: ChartProps) => {
               style={{ bottom: '9px', left: '3px', position: 'absolute', zIndex: 50 }}
               clean
             >
-              <CloudArrowDownIconOutline />
+              <CloudArrowDownIconOutline style={{ fontSize: '1.3rem', zIndex: 5 }} fontSize='small' />
             </IconButton>
           </Tooltip>
         ) : (
@@ -174,6 +196,7 @@ const NeoTableChart = (props: ChartProps) => {
           rows={rows}
           columns={columns}
           columnVisibilityModel={hiddenColumns}
+          onCellClick={() => false}
           onCellDoubleClick={(e) => {
             setNotificationOpen(true);
             navigator.clipboard.writeText(e.value);

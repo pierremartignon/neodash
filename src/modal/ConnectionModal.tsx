@@ -2,6 +2,9 @@ import React, { useEffect } from 'react';
 import { SSOLoginButton } from '../component/sso/SSOLoginButton';
 import { Button, Dialog, Switch, TextInput, Dropdown } from '@neo4j-ndl/react';
 import { PlayIconOutline } from '@neo4j-ndl/react/icons';
+import { CUSTOM_CONNECTION_FOOTER_TEXT } from '../config/ApplicationConfig';
+import IconButton from '@mui/icons-material';
+import { Badge, MenuItem, TextField } from '@mui/material';
 
 /**
  * Configures setting the current Neo4j database connection for the dashboard.
@@ -53,8 +56,15 @@ export default function NeoConnectionModal({
         aria-labelledby='form-dialog-title'
         disableCloseButton
       >
-        <Dialog.Header id='form-dialog-title'>{standalone ? 'Connect to Dashboard' : 'Connect to Neo4j'}</Dialog.Header>
-        <Dialog.Content className='n-flex n-flex-col n-gap-token-4'>
+        <Dialog.Header id='form-dialog-title'>
+          {standalone ? 'Connect to Dashboard' : 'Connect to Neo4j'}
+          <IconButton style={{ padding: '0px', float: 'right' }}>
+            <Badge overlap='rectangular' badgeContent={''}>
+              <img style={{ width: '36px', height: '36px' }} src='neo4j-icon-color.png' />
+            </Badge>
+          </IconButton>
+        </Dialog.Header>
+        <Dialog.Content>
           <div className='n-flex n-flex-row n-flex-wrap'>
             <Dropdown
               id='protocol'

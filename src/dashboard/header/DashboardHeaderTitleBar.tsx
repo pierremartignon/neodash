@@ -1,18 +1,27 @@
 import { Toolbar, Badge, InputBase, Tooltip } from '@mui/material';
 import React, { useCallback, useEffect } from 'react';
+import MenuIcon from '@material-ui/icons/Menu';
 import { connect } from 'react-redux';
 import debounce from 'lodash/debounce';
 import { IconButton } from '@neo4j-ndl/react';
 import { CameraIconSolid } from '@neo4j-ndl/react/icons';
+import ImageIcon from '@material-ui/icons/Image';
+import {
+  DASHBOARD_BUTTON_IMAGE,
+  DASHBOARD_BUTTON_IMAGE_SIZE,
+  DASHBOARD_HEADER_COLOR,
+} from '../../config/ApplicationConfig';
 
 export const NeoDashboardHeaderTitleBar = ({
   dashboardTitle,
   downloadImageEnabled,
   onDownloadImage,
+  open,
   setDashboardTitle,
   connection,
   editable,
   standalone,
+  handleDrawerOpen,
   onConnectionModalOpen,
 }) => {
   const [dashboardTitleText, setDashboardTitleText] = React.useState(dashboardTitle);
@@ -31,6 +40,28 @@ export const NeoDashboardHeaderTitleBar = ({
       className='n-bg-primary-70'
       style={{ paddingLeft: 88, paddingRight: 24, minHeight: '64px', zIndex: 1000 }}
     >
+      {!standalone ? (
+        <IconButton
+          edge='start'
+          color='inherit'
+          aria-label='open drawer'
+          onClick={handleDrawerOpen}
+          style={
+            open
+              ? {
+                  display: 'none',
+                }
+              : {
+                  marginRight: 36,
+                  marginLeft: -19,
+                }
+          }
+        >
+          <MenuIcon />
+        </IconButton>
+      ) : (
+        <></>
+      )}
       <InputBase
         id='center-aligned'
         style={{ textAlign: 'center', fontSize: '22px', flexGrow: 1, color: 'white' }}
@@ -78,7 +109,12 @@ export const NeoDashboardHeaderTitleBar = ({
           size='large'
           clean
         >
-          <img src='neo4j-icon.png' />
+          <Badge overlap='rectangular' badgeContent={''}>
+            <img
+              style={{ width: DASHBOARD_BUTTON_IMAGE_SIZE, height: DASHBOARD_BUTTON_IMAGE_SIZE }}
+              src={DASHBOARD_BUTTON_IMAGE}
+            />
+          </Badge>
         </IconButton>
       </Tooltip>
     </Toolbar>

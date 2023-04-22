@@ -1,4 +1,5 @@
 import React from 'react';
+import { Drawer, ListItem, IconButton, Divider, ListItemIcon, ListItemText, List, Button } from '@material-ui/core';
 import { Tooltip } from '@mui/material';
 import NeoSaveModal from '../../modal/SaveModal';
 import NeoLoadModal from '../../modal/LoadModal';
@@ -14,10 +15,25 @@ import { setAboutModalOpen, setConnected, setWelcomeScreenOpen } from '../../app
 import NeoSettingsModal from '../../settings/SettingsModal';
 import { getDashboardExtensions, getDashboardSettings } from '../DashboardSelectors';
 import { updateDashboardSetting } from '../../settings/SettingsActions';
+import LibraryBooksIcon from '@material-ui/icons/LibraryBooks';
 import NeoExtensionsModal from '../../extensions/ExtensionsModal';
 import { getExampleReports } from '../../extensions/ExtensionUtils';
 import { SideNavigation, SideNavigationList, SideNavigationItem, SideNavigationGroupHeader } from '@neo4j-ndl/react';
 import { BookOpenIconOutline, InformationCircleIconOutline, HomeIconOutline } from '@neo4j-ndl/react/icons';
+
+/**
+ * For each config in extensionConfig, if the extensionConfig is opened, render its component
+ * @returns
+ */
+// TODO: abstract logic
+function renderExtensionDrawers() {
+  return <></>;
+}
+
+// TODO: abstract logic
+function renderExtensionModals() {
+  return <></>;
+}
 
 // The sidebar that appears on the left side of the dashboard.
 export const NeoDrawer = ({
@@ -91,7 +107,12 @@ export const NeoDrawer = ({
       </SideNavigation>
     </div>
   );
-  return content;
+  return (
+    <>
+      {content}
+      {/*  renderExtensionDrawers() */}
+    </>
+  );
 };
 
 const mapStateToProps = (state) => ({
@@ -103,11 +124,11 @@ const mapStateToProps = (state) => ({
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  onAboutModalOpen: () => dispatch(setAboutModalOpen(true)),
+  onAboutModalOpen: (_) => dispatch(setAboutModalOpen(true)),
   updateDashboardSetting: (setting, value) => {
     dispatch(updateDashboardSetting(setting, value));
   },
-  resetApplication: () => {
+  resetApplication: (_) => {
     dispatch(setWelcomeScreenOpen(true));
     dispatch(setConnected(false));
   },

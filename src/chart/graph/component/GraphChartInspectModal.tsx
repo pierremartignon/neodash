@@ -4,6 +4,7 @@ import { GraphChartVisualizationProps } from '../GraphChartVisualization';
 import { getEntityHeader } from '../util/NodeUtils';
 import { Dialog } from '@neo4j-ndl/react';
 // import  Dialog from '@material-ui/core/Dialog';
+import GraphEntityInspectionTable from './GraphEntityInspectionTable';
 
 export const formatProperty = (property) => {
   if (property.startsWith('http://') || property.startsWith('https://')) {
@@ -12,6 +13,9 @@ export const formatProperty = (property) => {
   return property;
 };
 
+/**
+ * Renders a pop-up window to inspect a node/relationship properties in a read-only table.
+ */
 export const NeoGraphChartInspectModal = (props: GraphChartVisualizationProps) => {
   return (
     <div>
