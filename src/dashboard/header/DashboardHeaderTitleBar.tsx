@@ -1,11 +1,10 @@
 import { Toolbar, Badge, InputBase, Tooltip } from '@mui/material';
 import React, { useCallback, useEffect } from 'react';
-import MenuIcon from '@material-ui/icons/Menu';
+import { Menu } from '@mui/icons-material';
 import { connect } from 'react-redux';
 import debounce from 'lodash/debounce';
 import { IconButton } from '@neo4j-ndl/react';
 import { CameraIconSolid } from '@neo4j-ndl/react/icons';
-import ImageIcon from '@material-ui/icons/Image';
 import {
   DASHBOARD_BUTTON_IMAGE,
   DASHBOARD_BUTTON_IMAGE_SIZE,
@@ -57,7 +56,7 @@ export const NeoDashboardHeaderTitleBar = ({
                 }
           }
         >
-          <MenuIcon />
+          <Menu />
         </IconButton>
       ) : (
         <></>

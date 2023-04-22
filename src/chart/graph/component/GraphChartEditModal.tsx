@@ -6,11 +6,8 @@ import DialogContentText from '@material-ui/core/DialogContentText';
 import DialogTitle from '@material-ui/core/DialogTitle';
 import Button from '@mui/material/Button';
 import { Badge, IconButton } from '@material-ui/core';
-import { Fab, TextField, Typography } from '@material-ui/core';
-import AddIcon from '@material-ui/icons/Add';
-import { Autocomplete } from '@material-ui/lab';
-import CloseIcon from '@material-ui/icons/Close';
-import PlayArrow from '@material-ui/icons/PlayArrow';
+import { Fab, TextField, Typography } from '@mui/material';
+import { Add, Close, PlayArrow } from '@mui/icons-material/';
 import { LabelTypeAutocomplete } from './autocomplete/LabelTypeAutocomplete';
 import { DeletePropertyButton } from './button/modal/DeletePropertyButton';
 import {
@@ -111,7 +108,7 @@ export const GraphChartEditModal = (props: GraphChartEditorVisualizationProps) =
           style={{ marginLeft: '40px', padding: '3px', float: 'right' }}
         >
           <Badge overlap='rectangular' badgeContent={''}>
-            <CloseIcon />
+            <Close />
           </Badge>
         </IconButton>
       </DialogTitle>
@@ -200,7 +197,7 @@ export const GraphChartEditModal = (props: GraphChartEditorVisualizationProps) =
                       setProperties(properties.concat(newProperty));
                     }}
                   >
-                    <AddIcon />
+                    <Add />
                   </Fab>
                 </Typography>
               </td>

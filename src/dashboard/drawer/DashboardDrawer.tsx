@@ -15,7 +15,6 @@ import { setAboutModalOpen, setConnected, setWelcomeScreenOpen } from '../../app
 import NeoSettingsModal from '../../settings/SettingsModal';
 import { getDashboardExtensions, getDashboardSettings } from '../DashboardSelectors';
 import { updateDashboardSetting } from '../../settings/SettingsActions';
-import LibraryBooksIcon from '@material-ui/icons/LibraryBooks';
 import NeoExtensionsModal from '../../extensions/ExtensionsModal';
 import { getExampleReports } from '../../extensions/ExtensionUtils';
 import { SideNavigation, SideNavigationList, SideNavigationItem, SideNavigationGroupHeader } from '@neo4j-ndl/react';

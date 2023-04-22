@@ -1,7 +1,7 @@
 import React from 'react';
 import Marker from 'react-leaflet-enhanced-marker';
 import MarkerClusterGroup from 'react-leaflet-cluster';
-import LocationOnIcon from '@material-ui/icons/LocationOn';
+import { LocationOn } from '@mui/icons-material';
 import 'leaflet/dist/leaflet.css';
 import { Popup, Tooltip } from 'react-leaflet';
 import { extensionEnabled } from '../../../extensions/ExtensionUtils';
@@ -83,7 +83,7 @@ export function createMarkers(data, props) {
         key={i}
         icon={
           <div style={{ color: node.color, textAlign: 'center', marginTop: markerMarginTop }}>
-            <LocationOnIcon fontSize={node.size}></LocationOnIcon>
+            <LocationOn fontSize={node.size}></LocationOn>
           </div>
         }
       >

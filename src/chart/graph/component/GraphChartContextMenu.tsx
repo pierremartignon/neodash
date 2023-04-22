@@ -1,14 +1,12 @@
 import * as React from 'react';
 import MenuItem from '@mui/material/MenuItem';
 import { GraphChartVisualizationProps } from '../GraphChartVisualization';
-import { Card, CardHeader, IconButton } from '@material-ui/core';
+import { Card, CardHeader, IconButton } from '@mui/material';
 import { NestedMenuItem, IconMenuItem } from 'mui-nested-menu';
-import CloseIcon from '@material-ui/icons/Close';
-import SearchIcon from '@material-ui/icons/Search';
+import { Close, Edit, Search } from '@mui/icons-material';
 import { RenderNode, RenderNodeChip, RenderRelationshipChip } from '../../../report/ReportRecordProcessing';
 import { getNodeLabel } from '../util/NodeUtils';
 import { EditAction, EditType, GraphChartEditModal } from './GraphChartEditModal';
-import EditIcon from '@material-ui/icons/Edit';
 import { handleExpand, handleGetNodeRelTypes } from '../util/ExplorationUtils';
 import { useEffect } from 'react';
 import { mergeDatabaseStatCountsWithCountsInView } from '../util/ExplorationUtils';
@@ -57,7 +55,7 @@ export const GraphChartContextMenu = (props: GraphChartVisualizationProps) => {
               }}
               onClick={handleClose}
             >
-              <CloseIcon />
+              <Close />
             </IconButton>
           }
           titleTypographyProps={{ variant: 'h6' }}
@@ -70,7 +68,7 @@ export const GraphChartContextMenu = (props: GraphChartVisualizationProps) => {
           }
         />
         <IconMenuItem
-          rightIcon={<SearchIcon />}
+          rightIcon={<Search />}
           label='Inspect'
           onClick={() => {
             props.interactivity.setContextMenuOpen(false);
@@ -79,7 +77,7 @@ export const GraphChartContextMenu = (props: GraphChartVisualizationProps) => {
         ></IconMenuItem>
         {props.interactivity.enableEditing ? (
           <IconMenuItem
-            rightIcon={<EditIcon />}
+            rightIcon={<Edit />}
             label='Edit'
             onClick={() => {
               setEditableEntityType(expandable ? EditType.Node : EditType.Relationship);

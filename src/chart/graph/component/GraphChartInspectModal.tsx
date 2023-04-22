@@ -3,7 +3,6 @@ import { Table, TableBody, TableCell, TableContainer, TableRow } from '@material
 import { GraphChartVisualizationProps } from '../GraphChartVisualization';
 import { getEntityHeader } from '../util/NodeUtils';
 import { Dialog } from '@neo4j-ndl/react';
-// import  Dialog from '@material-ui/core/Dialog';
 import GraphEntityInspectionTable from './GraphEntityInspectionTable';
 
 export const formatProperty = (property) => {

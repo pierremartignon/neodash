@@ -5,7 +5,6 @@ import NeoCardViewFooter from './CardViewFooter';
 import NeoReport from '../../report/Report';
 import { CardContent } from '@mui/material';
 import NeoCodeEditorComponent from '../../component/editor/CodeEditorComponent';
-import PlayCircleFilledIcon from '@material-ui/icons/PlayCircleFilled';
 
 import { CARD_FOOTER_HEIGHT, CARD_HEADER_HEIGHT } from '../../config/CardConfig';
 import { extensionEnabled, getReportTypes } from '../../extensions/ExtensionUtils';

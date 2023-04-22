@@ -6,7 +6,6 @@ import {
   DASHBOARD_HEADER_BRAND_LOGO,
   DASHBOARD_HEADER_COLOR,
 } from '../../config/ApplicationConfig';
-import MenuIcon from '@mui/icons-material';
 
 export const NeoDashboardPlaceholder = ({ connected }) => {
   const defaultToolbarContent = (

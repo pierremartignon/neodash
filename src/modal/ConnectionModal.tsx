@@ -3,7 +3,7 @@ import { SSOLoginButton } from '../component/sso/SSOLoginButton';
 import { Button, Dialog, Switch, TextInput, Dropdown } from '@neo4j-ndl/react';
 import { PlayIconOutline } from '@neo4j-ndl/react/icons';
 import { CUSTOM_CONNECTION_FOOTER_TEXT } from '../config/ApplicationConfig';
-import IconButton from '@mui/icons-material';
+import { IconButton } from '@neo4j-ndl/react';
 import { Badge, MenuItem, TextField } from '@mui/material';
 
 /**

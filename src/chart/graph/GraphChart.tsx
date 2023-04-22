@@ -13,9 +13,9 @@ import { GraphChartVisualizationProps, layouts } from './GraphChartVisualization
 import { handleExpand } from './util/ExplorationUtils';
 import { categoricalColorSchemes } from '../../config/ColorConfig';
 import { IconButtonArray } from '@neo4j-ndl/react';
-import { IconButton, Tooltip } from '@material-ui/core';
-import SaveAltIcon from '@material-ui/icons/SaveAlt';
-import { RenderSubValue } from '../../report/ReportRecordProcessing';
+import { Tooltip } from '@material-ui/core';
+import { IconButton } from '@neo4j-ndl/react';
+import { SaveAlt } from '@mui/icons-material';
 import { downloadCSV } from '../ChartUtils';
 import { GraphChartContextMenu } from './component/GraphChartContextMenu';
 import { getSettings } from '../SettingsUtils';
@@ -244,7 +244,7 @@ const NeoGraphChart = (props: ChartProps) => {
               aria-label='download csv'
               style={{ bottom: '9px', left: '3px', position: 'absolute' }}
             >
-              <SaveAltIcon style={{ fontSize: '1.3rem', zIndex: 5 }} fontSize='small'></SaveAltIcon>
+              <SaveAlt style={{ fontSize: '1.3rem', zIndex: 5 }} fontSize='small'></SaveAlt>
             </IconButton>
           </Tooltip>
         ) : (
